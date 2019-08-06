@@ -12,7 +12,7 @@ export default function auth(state = INITIAL_STATE, action){
       return produce(state, draft => {
         draft.token = action.payload.token;
         draft.signed = true;
-      })
+      });
     default:
       return state;
   }

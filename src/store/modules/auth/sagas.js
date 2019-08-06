@@ -5,14 +5,14 @@ import api from '~/services/api';
 import { signInSuccess } from './actions';
 
 export function* signIn({ payload }) {
-  console.tron.log('asfd');
+  
   const { email, password } = payload;
-
+  
   const response = yield call(api.post, 'sessions', {
     email,
     password
   });
-
+  
   const { token, user } = response.data;
 
   if(!user.provider){
