@@ -2,11 +2,12 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 import history from '~/services/history';
 import api from '~/services/api';
 
-import { singInSuccess } from './actions';
+import { signInSuccess } from './actions';
 
 export function* signIn({ payload }) {
+  console.tron.log('asfd');
   const { email, password } = payload;
-  
+
   const response = yield call(api.post, 'sessions', {
     email,
     password
@@ -19,7 +20,7 @@ export function* signIn({ payload }) {
     return;
   }
 
-  yield put(singInSuccess(token, user));
+  yield put(signInSuccess(token, user));
 
   history.push('/dashboard');
 }
