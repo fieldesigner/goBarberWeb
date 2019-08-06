@@ -1,9 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from '~/assets/logo.svg';
 import {Form, Input} from '@rocketseat/unform';
 import * as Yup from 'yup';
 
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -18,8 +20,10 @@ const schema = Yup.object().shape({
 
 export default function SingUp() {
 
-  function handleSubmit(data){
-    console.tron.log(data);
+  const dispatch = useDispatch();
+
+  function handleSubmit({name, email, password}){
+    dispatch(signUpRequest(name, email, password));
   }
 
   return (
@@ -31,7 +35,7 @@ export default function SingUp() {
       <Input name="email" type="email" placeholder="Seu email" />
       <Input name="password" type="password" placeholder="Sua senha" />
 
-      <button type="submit">Crir conta</button>
+      <button type="submit">Criar conta</button>
       <Link to="/">Já tenho uma conta</Link>
     </Form>
     </>
