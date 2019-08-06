@@ -21,7 +21,7 @@ export default function RouteWrapper({
 
   // se tiver logado e a rota nao for privada, redireciona para o dashboard
   if(signed && !isPrivate){
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   //definindo layout caso esteja logado ou nao
